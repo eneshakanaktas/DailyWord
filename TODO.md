@@ -2,11 +2,12 @@
 
 ## Öncelik: Yüksek (Aşama 2 — Veri Katmanı)
 
-- [ ] Türkçe 5 harfli kelime listesi oluşturmak veya temin etmek
-- [ ] Kelime listesi veri formatını belirlemek (TextAsset / JSON / ScriptableObject)
-- [ ] Kelime yükleme ve erişim mekanizmasını yazmak (`Data/` katmanı)
-- [ ] Kelime doğrulama mantığını yazmak (girilen kelime geçerli mi?)
-- [ ] Günlük kelime seçim algoritmasını tasarlamak
+- [x] Geliştirme amaçlı Türkçe 5 harfli kelime listesi oluşturmak
+- [x] Kelime listesi veri formatını belirlemek (JSON TextAsset)
+- [x] Kelime yükleme ve erişim mekanizmasını yazmak (`Data/` katmanı)
+- [x] Kelime doğrulama mantığını yazmak (girilen kelime geçerli mi?)
+- [x] Günlük kelime seçim algoritmasını tasarlamak
+- [ ] Üretim kapsamındaki Türkçe kelime listesini gözden geçirmek ve genişletmek
 
 ## Öncelik: Yüksek (Aşama 3 — Oyun Mekaniği)
 

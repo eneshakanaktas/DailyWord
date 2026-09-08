@@ -97,3 +97,35 @@
 - Endişelerin ayrılması (menü ↔ oyun)
 - Sahne geçişleriyle temiz bellek yönetimi
 - İleride splash screen vb. eklemek kolaylaşır
+
+---
+
+### K-007: Kelime Listesi JSON TextAsset Olarak Tutulacak
+
+**Tarih:** 2026-09-08
+**Durum:** Kabul Edildi
+
+**Karar:** Türkçe kelime listesi `Assets/_Project/Data/WordLists/` altında JSON dosyası olarak tutulacak ve `WordListLoader` üzerinden yüklenecek.
+
+**Gerekçe:**
+- Kaynak veri oyun kodundan ayrı kalır.
+- Unity `TextAsset` ile doğrudan referanslanabilir.
+- `Resources` tabanlı global yükleme gerektirmez.
+- Liste sürümü ve deterministik sıralama dosyanın içinde açıkça tutulabilir.
+
+Kaynak girdiler sessizce normalize edilmez; canonical olmayan veya tekrarlı girdiler reddedilir.
+
+---
+
+### K-008: Günlük Bulmaca Seçimi Deterministik Hash Kullanacak
+
+**Tarih:** 2026-09-08
+**Durum:** Kabul Edildi
+
+**Karar:** Günlük kelime indeksi, liste sürümü ile `yyyy-MM-dd` tarihinin SHA-256 özetinden deterministik olarak üretilecek.
+
+**Gerekçe:**
+- Aynı tarih ve aynı veri seti tüm oyuncularda aynı sonucu üretir.
+- .NET `GetHashCode()` gibi platforma göre değişebilen yöntemlere bağlı kalınmaz.
+- Liste sürümü `PuzzleId` içinde yer alır ve veri seti değişiklikleri izlenebilir.
+- Sunucu, ağ veya üçüncü taraf servis gerektirmez.

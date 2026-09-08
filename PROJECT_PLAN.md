@@ -20,12 +20,15 @@ Hedef platform Android, motor Unity 6.6'dır.
 - Sürüm kontrolü (.gitignore)
 - Proje dokümantasyonu
 
-### Aşama 2 — Veri Katmanı (Planlanıyor)
+### Aşama 2 — Veri Katmanı (Temel Uygulama Tamamlandı)
 
-- Türkçe 5 harfli kelime listesinin oluşturulması
-- Kelime veri formatının belirlenmesi (JSON/TextAsset/ScriptableObject)
-- Kelime doğrulama mekanizması
-- Günlük kelime seçim sistemi
+- [x] Geliştirme amaçlı Türkçe 5 harfli kelime listesinin oluşturulması
+- [x] Kelime veri formatının belirlenmesi (JSON/TextAsset)
+- [x] Kelime listesi yükleme ve doğrulama mekanizması
+- [x] Deterministik günlük kelime seçim sistemi
+- [ ] Üretim kapsamındaki kelime listesinin gözden geçirilmesi ve genişletilmesi
+
+Bu aşamada Wordle değerlendirmesi, UI, save ve oyuncu istatistikleri uygulanmamıştır.
 
 ### Aşama 3 — Oyun Mekaniği (Planlanıyor)
 

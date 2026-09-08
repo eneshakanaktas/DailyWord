@@ -1,5 +1,19 @@
 # CHANGELOG.md — DailyWord Değişiklik Günlüğü
 
+## [0.2.0] — 2026-09-08 — Aşama 2 Veri Katmanı Başlangıcı
+
+### Eklenenler
+- `Assets/_Project/Data/WordLists/turkish_words.json` geliştirme kelime listesi
+- `TurkishWordRules` ile Türkçe casing, Unicode ve 5 harf doğrulaması
+- `WordList` ve `WordListLoader` ile JSON/TextAsset veri yükleme
+- Liste sürümünü ve tarih bilgisini kullanan deterministik `DailyPuzzleSelector`
+- Data Layer için NUnit testleri
+
+### Kapsam Sınırı
+- Kelime değerlendirme/Wordle skorlaması uygulanmadı.
+- UI, save, istatistik, history ve GameManager uygulanmadı.
+- Foundation cleanup kalıntıları değiştirilmedi.
+
 ## [0.1.0] — 2026-09-08 — Temel Altyapı Kurulumu
 
 ### Eklenenler

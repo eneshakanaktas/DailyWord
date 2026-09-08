@@ -62,7 +62,18 @@ Assets/_Project/
 - Veri modelleri (ScriptableObject veya POCO)
 - Kelime doğrulama
 
-**Henüz uygulanmadı.**
+**Aşama 2 kapsamında temel yapı uygulandı.**
+
+- Kaynak formatı: `Assets/_Project/Data/WordLists/*.json`
+- JSON şeması: `version` ve sıralı `words` alanları
+- `WordListLoader`: JSON/TextAsset yükleme sınırı
+- `WordList`: sıralı, tekrarsız ve canonical kelime koleksiyonu
+- `TurkishWordRules`: Türkçe Unicode, casing ve 5 harf doğrulaması
+- `DailyPuzzleSelector`: tarih + liste sürümüne göre deterministik seçim
+
+Kaynak listedeki kelimeler otomatik düzeltilmez; canonical olmayan, hatalı veya tekrarlı girdiler yükleme sırasında reddedilir.
+
+Günlük seçim istemci tarafında çalışır. Aynı tarih ve aynı liste sürümü aynı `PuzzleId` ve kelimeyi üretir. Save katmanı henüz bu sonucu kalıcı olarak saklamaz.
 
 ### Save
 - Oyuncu istatistiklerinin kaydedilmesi / yüklenmesi
@@ -98,4 +109,4 @@ Assets/_Project/
 ---
 
 > **Bu belge, proje geliştikçe güncellenecektir.**
-> Şu an yalnızca klasör yapısı ve sahne iskeleti mevcuttur.
+> Şu an temel veri katmanı ve sahne iskeleti mevcuttur; gameplay ve UI henüz uygulanmamıştır.

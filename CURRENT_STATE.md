@@ -6,8 +6,9 @@
 
 ## Genel Durum
 
-Proje, **Aşama 1 — Temel Altyapı** kurulumunu tamamlamıştır.
-Henüz oyun mekaniği, UI veya veri sistemi uygulanmamıştır.
+Proje, **Aşama 1 — Temel Altyapı** kurulumunu tamamlamış ve
+**Aşama 2 — Veri Katmanı** için ilk uygulamayı almıştır.
+Oyun mekaniği, UI ve kayıt sistemi henüz uygulanmamıştır.
 
 ---
 
@@ -55,18 +56,35 @@ Kaldırılan paketler (10 adet):
 - DECISIONS.md, TODO.md, CHANGELOG.md
 - FONT_REQUIREMENTS.md (Assets/_Project/UI/Fonts/)
 
+### Aşama 2 — Veri Katmanı
+- `Assets/_Project/Data/WordLists/turkish_words.json` geliştirme kelime listesi oluşturuldu.
+- JSON veri formatı `version` ve sıralı `words` alanlarıyla belirlendi.
+- Türkçe karakter ve `I / İ / ı / i` ayrımı için `TurkishWordRules` oluşturuldu.
+- Kaynak kelimeleri doğrulayan `WordList` ve `WordListLoader` oluşturuldu.
+- Tarih ve liste sürümüne göre deterministik `DailyPuzzleSelector` oluşturuldu.
+- Veri katmanı testleri `Assets/_Project/Scripts/Data/Tests/Editor/` altında oluşturuldu.
+- Save, UI, GameManager ve Wordle değerlendirme sistemi bu aşamada uygulanmadı.
+
 ---
 
 ## Mevcut Olmayan / Uygulanmamış Öğeler
 
 - ❌ Oyun mekaniği (kelime tahmini, değerlendirme)
 - ❌ UI bileşenleri (klavye, tahta, menüler)
-- ❌ Kelime listesi veya veri dosyaları
+- ❌ Üretim kapsamındaki tam kelime listesi
 - ❌ Kayıt/yükleme sistemi
 - ❌ GameManager veya herhangi bir runtime script
 - ❌ Font asset'leri (sadece gereksinimler belgelendi)
 - ❌ Animasyonlar
 - ❌ Ses efektleri
+
+---
+
+## Aşama 2 Sınırı
+
+- JSON kelime listesi yükleme ve doğrulama uygulanmıştır.
+- Mevcut liste geliştirme amaçlı sınırlı bir listedir; üretim sözlüğü değildir.
+- Kelime değerlendirme, günlük oyun akışı ve oyuncu kayıtları sonraki aşamalardadır.
 
 ---
 
