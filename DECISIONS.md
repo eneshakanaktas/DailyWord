@@ -129,3 +129,54 @@ Kaynak girdiler sessizce normalize edilmez; canonical olmayan veya tekrarlı gir
 - .NET `GetHashCode()` gibi platforma göre değişebilen yöntemlere bağlı kalınmaz.
 - Liste sürümü `PuzzleId` içinde yer alır ve veri seti değişiklikleri izlenebilir.
 - Sunucu, ağ veya üçüncü taraf servis gerektirmez.
+
+---
+
+### K-009: Safe Area Yaklaşımı — Basit Bileşen
+
+**Tarih:** 2026-09-09
+**Durum:** Kabul Edildi
+
+**Bağlam:** Mobil cihazlarda notch, yuvarlak köşeler ve status bar gibi alanlar UI'ın üzerini kapatabilir.
+
+**Karar:** `SafeAreaHandler` adında tek bir MonoBehaviour oluşturuldu. Bağlandığı RectTransform'un anchor'larını `Screen.safeArea` değerlerine göre otomatik ayarlar.
+
+**Gerekçe:**
+- Framework düzeyinde bir safe area sistemi gereksiz karmaşıklık ekler
+- Tek bileşen yaklaşımı ile istenilen panele kolayca eklenebilir
+- Ekran boyutu değişikliklerini (rotation, resize) otomatik algılar
+- Unity'nin `Screen.safeArea` API'si yeterli bilgiyi sağlar
+
+---
+
+### K-010: Font Stratejisi — TMP Varsayılanı + Kullanıcı İmport'u
+
+**Tarih:** 2026-09-09
+**Durum:** Kabul Edildi
+
+**Bağlam:** TMP Essential Resources Unity Editor'de import edilmeden TMP bileşenleri tam çalışmaz. Font atlas oluşturmak Türkçe karakter seti gerektirir.
+
+**Karar:** Scriptler `TMPro.TMP_Text` referanslarını kullanır. TMP Essential Resources import'u ve Türkçe karakter destekli font atlas oluşturma işlemi Unity Editor'de kullanıcı tarafından yapılacak.
+
+**Gerekçe:**
+- TMP Essential Resources import'u Unity Editor GUI'si gerektirir (dosya düzeyinde yapılamaz)
+- Proje dışından font dosyası indirilmeyecek (teknik kısıtlama)
+- Varsayılan LiberationSans fontu Türkçe karakterleri destekler, atlas oluşturulduğunda çalışır
+- Font seçimi ilerleyen aşamalarda değiştirilebilir
+
+---
+
+### K-011: Sahne Oluşturma — Script + Editor Kılavuzu
+
+**Tarih:** 2026-09-09
+**Durum:** Kabul Edildi
+
+**Bağlam:** MainMenu sahnesinin Canvas hiyerarşisi oluşturulması gerekiyor. YAML düzeyinde programatik sahne oluşturma, TMP bileşenlerinin karmaşık serialization yapısı nedeniyle riskli.
+
+**Karar:** C# scriptler (MainMenuController, SafeAreaHandler, UIColors) oluşturuldu. Sahne hiyerarşisi için `MAINMENU_SETUP.md` kılavuzu hazırlandı.
+
+**Gerekçe:**
+- TMP bileşenleri çok sayıda serialized alan içerir; YAML düzenleme hatalara açık
+- Canvas Scaler, RectTransform anchor düzenlemeleri tam doğruluk gerektirir
+- Editor kılavuzu, adım adım doğrulanabilir bir süreç sağlar
+- Scriptler derlenebilir ve test edilebilir; sahne Editor'de güvenle oluşturulur

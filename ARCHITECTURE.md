@@ -41,7 +41,7 @@ Assets/_Project/
 - Sahne geçişleri
 - Genel uygulama durumu
 
-**Henüz uygulanmadı.** Gerçek bir GameManager oluşturulmadan önce oyun akışı tasarlanacaktır.
+**Aşama 3A kapsamında `SceneNavigator` oluşturuldu.** Statik sahne geçiş utility'si (MainMenu ↔ Game). GameManager henüz oluşturulmadı.
 
 ### Game
 - Kelime tahmini ve harf değerlendirmesi
@@ -55,7 +55,13 @@ Assets/_Project/
 - Kullanıcı girişi işleme
 - Ekran geçişleri
 
-**Henüz uygulanmadı.**
+**Aşama 3A kapsamında temel yapı oluşturuldu.**
+
+- `MainMenuController`: Ana menü buton yönetimi ve navigasyon
+- `SafeAreaHandler`: Mobil safe area (notch, status bar) adaptasyonu
+- `UIColors`: Premium renk paleti sabitleri
+
+Canvas hiyerarşisi Unity Editor'de `MAINMENU_SETUP.md` kılavuzuna göre oluşturulacak.
 
 ### Data
 - Kelime listesi yükleme ve erişim
@@ -103,10 +109,10 @@ Günlük seçim istemci tarafında çalışır. Aynı tarih ve aynı liste sür�
 
 | Sahne | İşlev | Durum |
 |-------|-------|-------|
-| MainMenu | Ana menü ekranı | Boş temel sahne |
+| MainMenu | Ana menü ekranı | Scriptler hazır, Canvas Editor'de oluşturulacak |
 | Game | Oyun ekranı | Boş temel sahne |
 
 ---
 
 > **Bu belge, proje geliştikçe güncellenecektir.**
-> Şu an temel veri katmanı ve sahne iskeleti mevcuttur; gameplay ve UI henüz uygulanmamıştır.
+> Veri katmanı, UI temeli (scriptler) ve sahne iskeleti mevcuttur; gameplay henüz uygulanmamıştır.

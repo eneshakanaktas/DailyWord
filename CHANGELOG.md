@@ -1,5 +1,22 @@
 # CHANGELOG.md — DailyWord Değişiklik Günlüğü
 
+## [0.3.0] — 2026-09-09 — Aşama 3A Ana Menü & UI Temeli
+
+### Eklenenler
+- `Assets/_Project/Scripts/Core/SceneNavigator.cs` — statik sahne geçiş utility'si
+- `Assets/_Project/Scripts/UI/MainMenuController.cs` — Ana menü buton yönetimi
+- `Assets/_Project/Scripts/UI/SafeAreaHandler.cs` — Mobil safe area adaptasyonu
+- `Assets/_Project/Scripts/UI/UIColors.cs` — Premium renk paleti sabitleri
+- `Assets/_Project/Scenes/MAINMENU_SETUP.md` — Unity Editor sahne kurulum kılavuzu
+
+### Kapsam Sınırı
+- Canvas / UI hiyerarşisi Unity Editor'de oluşturulacak (MAINMENU_SETUP.md kılavuzu)
+- TMP Essential Resources import'u Unity Editor gerektiriyor
+- İstatistikler, Geçmiş, Ayarlar butonları Debug.Log placeholder kullanıyor
+- Wordle tahtası, klavye, oyun mantığı, save sistemi uygulanmadı
+- Stage 2 Data Layer testleri değiştirilmedi
+- Foundation cleanup kalıntıları değiştirilmedi
+
 ## [0.2.0] — 2026-09-08 — Aşama 2 Veri Katmanı Başlangıcı
 
 ### Eklenenler

@@ -1,14 +1,13 @@
 # CURRENT_STATE.md — DailyWord Mevcut Proje Durumu
 
-**Son güncelleme:** 2026-09-08
+**Son güncelleme:** 2026-09-09
 
 ---
 
 ## Genel Durum
 
-Proje, **Aşama 1 — Temel Altyapı** kurulumunu tamamlamış ve
-**Aşama 2 — Veri Katmanı** için ilk uygulamayı almıştır.
-Oyun mekaniği, UI ve kayıt sistemi henüz uygulanmamıştır.
+Proje, **Aşama 1 — Temel Altyapı** ve **Aşama 2 — Veri Katmanı** tamamlanmıştır.
+**Aşama 3A — Ana Menü ve UI Temeli** scriptleri oluşturulmuş, sahne kurulumu Unity Editor'de yapılmayı beklemektedir.
 
 ---
 
@@ -44,7 +43,7 @@ Kaldırılan paketler (10 adet):
 `Assets/_Project/` altında 17 dizin oluşturuldu (detaylar için ARCHITECTURE.md)
 
 ### Sahneler
-- `Assets/_Project/Scenes/MainMenu.unity` — Boş temel URP 2D sahnesi
+- `Assets/_Project/Scenes/MainMenu.unity` — Temel URP 2D sahnesi (Canvas henüz Editor'de oluşturulacak)
 - `Assets/_Project/Scenes/Game.unity` — Boş temel URP 2D sahnesi
 - Build sırası: 0=MainMenu, 1=Game
 
@@ -55,6 +54,7 @@ Kaldırılan paketler (10 adet):
 - AGENTS.md, PROJECT_PLAN.md, ARCHITECTURE.md, CURRENT_STATE.md
 - DECISIONS.md, TODO.md, CHANGELOG.md
 - FONT_REQUIREMENTS.md (Assets/_Project/UI/Fonts/)
+- MAINMENU_SETUP.md (Assets/_Project/Scenes/)
 
 ### Aşama 2 — Veri Katmanı
 - `Assets/_Project/Data/WordLists/turkish_words.json` geliştirme kelime listesi oluşturuldu.
@@ -65,26 +65,37 @@ Kaldırılan paketler (10 adet):
 - Veri katmanı testleri `Assets/_Project/Scripts/Data/Tests/Editor/` altında oluşturuldu.
 - Save, UI, GameManager ve Wordle değerlendirme sistemi bu aşamada uygulanmadı.
 
+### Aşama 3A — Ana Menü ve UI Temeli (Scriptler Hazır)
+- `SceneNavigator` (Core) — statik sahne geçiş utility'si
+- `MainMenuController` (UI) — Ana menü buton yönetimi ve navigasyon
+- `SafeAreaHandler` (UI) — Mobil safe area adaptasyonu
+- `UIColors` (UI) — Premium renk paleti sabitleri
+- `MAINMENU_SETUP.md` — Unity Editor'de sahne kurulum kılavuzu
+- Canvas hiyerarşisi ve UI bileşenleri henüz Unity Editor'de oluşturulacak
+
 ---
 
 ## Mevcut Olmayan / Uygulanmamış Öğeler
 
+- ❌ MainMenu sahnesinde Canvas / UI bileşenleri (Editor'de oluşturulacak)
+- ❌ TMP Essential Resources import'u (Editor gerektirir)
 - ❌ Oyun mekaniği (kelime tahmini, değerlendirme)
-- ❌ UI bileşenleri (klavye, tahta, menüler)
 - ❌ Üretim kapsamındaki tam kelime listesi
 - ❌ Kayıt/yükleme sistemi
-- ❌ GameManager veya herhangi bir runtime script
+- ❌ GameManager veya herhangi bir runtime bootstrap
 - ❌ Font asset'leri (sadece gereksinimler belgelendi)
 - ❌ Animasyonlar
 - ❌ Ses efektleri
+- ❌ İstatistikler, Bulmaca Geçmişi, Ayarlar ekranları
 
 ---
 
-## Aşama 2 Sınırı
+## Aşama 3A Sınırı
 
-- JSON kelime listesi yükleme ve doğrulama uygulanmıştır.
-- Mevcut liste geliştirme amaçlı sınırlı bir listedir; üretim sözlüğü değildir.
-- Kelime değerlendirme, günlük oyun akışı ve oyuncu kayıtları sonraki aşamalardadır.
+- UI scriptleri oluşturulmuş ve derlemeye hazırdır.
+- Sahne kurulumu Unity Editor'de `MAINMENU_SETUP.md` kılavuzuna göre yapılmalıdır.
+- İstatistikler, Geçmiş ve Ayarlar butonları placeholder olarak Debug.Log kullanır.
+- Wordle tahtası, klavye ve oyun mantığı bu aşamada uygulanmamıştır.
 
 ---
 
@@ -92,6 +103,6 @@ Kaldırılan paketler (10 adet):
 
 - URP 17.6.0 pipeline ayarları (`Assets/Settings/`)
 - Input System ayarları
-- UGUI paketi
+- UGUI paketi (TMP dahil)
 - Test Framework
 - Tüm `com.unity.modules.*` paketleri
