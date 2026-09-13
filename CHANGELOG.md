@@ -1,5 +1,42 @@
 # CHANGELOG.md — DailyWord Değişiklik Günlüğü
 
+## [0.3.3] — 2026-09-13 — Aşama 3C Doğrulama ve Test Tamamlama
+
+### Eklenenler
+- `GameInputStateTests.Backspace_OnEmptyRow_DoesNothing` — boş satırda backspace testi (toplam 6 test)
+
+### Doğrulananlar
+- `Game.unity` sahnesinde `GameInputController` bileşeni `boardView` ve `keyboardController` serialized referanslarıyla kalıcı olarak kayıtlı.
+- `GameBoardView` (fileID: 1907188788) ve `TurkishKeyboardController` (fileID: 796293983) sahne YAML'ında doğrulandı.
+- `GameInputBootstrap` sahne wiring mevcutsa bootstrap'ı atlayarak doğru çalışır.
+- 30 tile (`Tile_01`..`Tile_30`), Row1/Row2/Row3, tüm Türkçe tuşlar, Key_Backspace ve Key_Enter sahne hiyerarşisinde doğrulandı.
+
+### Kapsam Sınırı
+- Assembly definition (asmdef) dosyaları eklenmedi — ana kod asmdef'siz olduğundan test asmdef'leri `Assembly-CSharp` referansını çözemez; Unity'nin `Editor` klasör convention'ı testleri otomatik bulur.
+
+## [0.3.2] — 2026-09-13 — Aşama 3C Türkçe Klavye ve Input Controller
+
+### Eklenenler
+- `Assets/_Project/Scripts/Game/GameInputState.cs` — aktif satır/kolon, 5 harf sınırı, backspace ve satır ilerletme state'i
+- `Assets/_Project/Scripts/Game/GameBoardView.cs` — `Tile_XX/Letter` TMP metinlerini otomatik bulan board view
+- `Assets/_Project/Scripts/Game/TurkishKeyboardController.cs` — QWERTY-TR harfleri, `⌫` ve `ENTER` için merkezi button binding
+- `Assets/_Project/Scripts/Game/GameInputController.cs` — klavye event'lerini board'a uygulayan ve `RowSubmitted` üreten input controller
+- `Assets/_Project/Scripts/Game/GameInputBootstrap.cs` — `Game` sahnesinde Play sırasında input bileşenlerini otomatik kuran bootstrap
+- `Assets/_Project/Scripts/Game/Editor/GameScene3CSetup.cs` — Unity Editor'de kalıcı 3C sahne wiring'i ve eksik tuş tamamlama komutu
+- `Assets/_Project/Scripts/Game/Tests/Editor/GameInputStateTests.cs` — input state sınırları ve Türkçe I ayrımı testleri
+
+### Doğrulananlar
+- `Assets/_Project/Scenes/Game.unity` içinde `GameCanvas > SafeAreaPanel > Board` altında `Tile_01` ... `Tile_30` yapısı bulundu.
+- `GameCanvas > SafeAreaPanel > Keyboard` altında `Row1`, `Row2`, `Row3` ve Türkçe harf tuşları bulundu.
+- Sahne dosyasında kalıcı `Key_Backspace` / `Key_Enter` kaydı bulunmadı; runtime controller Play sırasında eksikse oluşturacak şekilde bırakıldı.
+
+### Kapsam Sınırı
+- Kelime doğrulama ve Wordle değerlendirme uygulanmadı.
+- Save, result, stats, history ve settings sistemleri eklenmedi.
+- Yeni paket veya üçüncü taraf özellik eklenmedi.
+- Stage 2 Data Layer dosyaları ve testleri davranış olarak değiştirilmedi.
+- Unity batchmode sahne setup komutu denendi; proje Unity Editor'de açık olduğu için `return code 1` ile tamamlanamadı.
+
 ## [0.3.0] — 2026-09-09 — Aşama 3A Ana Menü & UI Temeli
 
 ### Eklenenler

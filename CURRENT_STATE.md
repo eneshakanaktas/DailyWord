@@ -1,13 +1,15 @@
 # CURRENT_STATE.md — DailyWord Mevcut Proje Durumu
 
-**Son güncelleme:** 2026-09-09
+**Son güncelleme:** 2026-09-13 (Stage 3C doğrulandı)
 
 ---
 
 ## Genel Durum
 
 Proje, **Aşama 1 — Temel Altyapı** ve **Aşama 2 — Veri Katmanı** tamamlanmıştır.
-**Aşama 3A — Ana Menü ve UI Temeli** scriptleri oluşturulmuş, sahne kurulumu Unity Editor'de yapılmayı beklemektedir.
+**Aşama 3A — Ana Menü ve UI Temeli** scriptleri oluşturulmuştur.
+**Aşama 3B — Oyun Tahtası UI Temeli** için `Game.unity` sahnesinde `GameCanvas > SafeAreaPanel > Board` altında 30 tile doğrulanmıştır.
+**Aşama 3C — Türkçe Klavye ve Input Controller** runtime kodu eklenmiştir.
 
 ---
 
@@ -44,7 +46,7 @@ Kaldırılan paketler (10 adet):
 
 ### Sahneler
 - `Assets/_Project/Scenes/MainMenu.unity` — Temel URP 2D sahnesi (Canvas henüz Editor'de oluşturulacak)
-- `Assets/_Project/Scenes/Game.unity` — Boş temel URP 2D sahnesi
+- `Assets/_Project/Scenes/Game.unity` — `GameCanvas`, `SafeAreaPanel`, `Header`, `Board`, `Keyboard`, `Row1`, `Row2`, `Row3` ve 30 tile içeren oyun UI sahnesi
 - Build sırası: 0=MainMenu, 1=Game
 
 ### Sürüm Kontrolü
@@ -73,16 +75,32 @@ Kaldırılan paketler (10 adet):
 - `MAINMENU_SETUP.md` — Unity Editor'de sahne kurulum kılavuzu
 - Canvas hiyerarşisi ve UI bileşenleri henüz Unity Editor'de oluşturulacak
 
+### Aşama 3B — Oyun Tahtası UI Temeli (Sahne Doğrulandı)
+- `Assets/_Project/Scenes/Game.unity` içinde `GameCanvas`, `SafeAreaPanel`, `Header`, `Board`, `Keyboard`, `Row1`, `Row2`, `Row3` nesneleri doğrulandı.
+- `Board` altında `Tile_01` ... `Tile_30` ve her tile altında `Letter` TMP metinleri doğrulandı.
+- `SafeAreaPanel` üzerinde mevcut `SafeAreaHandler` bağlantısı korunmuştur.
+
+### Aşama 3C — Türkçe Klavye ve Input Controller (Sahne Wiring Tamamlandı)
+- `GameInputState` aktif satır, aktif kolon, maksimum 5 harf ve 6 satır sınırlarını yönetir.
+- `GameBoardView` tile metinlerini `Tile_XX/Letter` yapısından otomatik bulur.
+- `TurkishKeyboardController` QWERTY-TR harflerini, `⌫` ve `ENTER` tuşlarını merkezi olarak bağlar.
+- `GameInputController` harf, silme ve 5 harf tamamlanınca `RowSubmitted` event akışını sağlar.
+- `GameInputBootstrap`, `Game` sahnesinde gerekli controller bileşenlerini Play sırasında otomatik kurar (sahne wiring zaten mevcutsa atlar).
+- `GameScene3CSetup` Editor komutu ile `Game.unity` sahnesine kalıcı component wiring uygulanmıştır.
+- `Game.unity` sahnesinde `GameInputController` bileşeni `boardView` ve `keyboardController` referanslarıyla kayıtlıdır.
+- 6 EditMode test yazılmıştır (harf girişi, sınır, backspace, boş backspace, enter, Türkçe I ayrımı).
+- Kelime doğrulama, değerlendirme, save, sonuç, istatistik, geçmiş ve ayarlar uygulanmamıştır.
+
 ---
 
 ## Mevcut Olmayan / Uygulanmamış Öğeler
 
 - ❌ MainMenu sahnesinde Canvas / UI bileşenleri (Editor'de oluşturulacak)
 - ❌ TMP Essential Resources import'u (Editor gerektirir)
-- ❌ Oyun mekaniği (kelime tahmini, değerlendirme)
+- ❌ Wordle değerlendirme sistemi
 - ❌ Üretim kapsamındaki tam kelime listesi
 - ❌ Kayıt/yükleme sistemi
-- ❌ GameManager veya herhangi bir runtime bootstrap
+- ❌ GameManager
 - ❌ Font asset'leri (sadece gereksinimler belgelendi)
 - ❌ Animasyonlar
 - ❌ Ses efektleri
@@ -90,12 +108,14 @@ Kaldırılan paketler (10 adet):
 
 ---
 
-## Aşama 3A Sınırı
+## Aşama 3A/3C Sınırı
 
 - UI scriptleri oluşturulmuş ve derlemeye hazırdır.
 - Sahne kurulumu Unity Editor'de `MAINMENU_SETUP.md` kılavuzuna göre yapılmalıdır.
 - İstatistikler, Geçmiş ve Ayarlar butonları placeholder olarak Debug.Log kullanır.
-- Wordle tahtası, klavye ve oyun mantığı bu aşamada uygulanmamıştır.
+- 3C yalnızca harf girişi, silme ve 5 harf tamamlandığında event üretme kapsamındadır.
+- `Game.unity` sahnesinde `GameInputController`, `GameBoardView` ve `TurkishKeyboardController` bileşenleri kalıcı olarak kayıtlıdır.
+- Kelime doğrulama, Wordle değerlendirme, sonuç ekranı, save, istatistik, geçmiş ve ayarlar bu aşamada uygulanmamıştır.
 
 ---
 

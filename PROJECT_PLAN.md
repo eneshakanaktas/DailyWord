@@ -40,19 +40,23 @@ Bu aşamada Wordle değerlendirmesi, UI, save ve oyuncu istatistikleri uygulanma
 - [ ] Unity Editor'de TMP import ve Canvas kurulumu
 - [ ] Runtime doğrulaması
 
-### Aşama 3B — Oyun Tahtası UI Temeli (Planlanıyor)
+### Aşama 3B — Oyun Tahtası UI Temeli ✅
 
-- 5×6 grid UI yapısı
-- Hücre (tile) görsel durumları için temel yapı
-- Game sahne UI foundation
-- Responsive tahta layout
+- [x] 5×6 grid UI yapısı
+- [x] Hücre (tile) görsel durumları için temel yapı
+- [x] Game sahne UI foundation
+- [x] Responsive tahta layout
 
-### Aşama 3C — Türkçe Klavye Girişi (Planlanıyor)
+### Aşama 3C — Türkçe Klavye Girişi (Sahne Wiring Tamamlandı — Editor Play Testi Bekliyor)
 
-- Ekran üstü Türkçe klavye (QWERTY-TR düzeni)
-- Harf girişi
-- Silme ve onay işlemleri
-- Giriş durumu yönetimi
+- [x] Ekran üstü Türkçe klavye (QWERTY-TR düzeni)
+- [x] Harf girişi
+- [x] Silme ve onay işlemleri
+- [x] Giriş durumu yönetimi
+- [x] 5 harf tamamlandığında değerlendirme aşamasına bağlanabilecek `RowSubmitted` event'i
+- [x] Sahne wiring (GameInputController, GameBoardView, TurkishKeyboardController bileşenleri sahneye kayıtlı)
+- [x] 6 EditMode test (harf girişi, sınır, backspace, boş backspace, enter, Türkçe I ayrımı)
+- [ ] Unity Editor Play testi
 
 ### Aşama 3D — Kelime Değerlendirme (Planlanıyor)
 

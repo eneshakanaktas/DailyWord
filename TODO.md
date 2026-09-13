@@ -22,16 +22,19 @@
 
 ## Öncelik: Yüksek (Aşama 3B — Oyun Tahtası UI Temeli)
 
-- [ ] 5×6 grid UI yapısını oluşturmak
-- [ ] Hücre (tile) görsel durumları için temel yapı
-- [ ] Game sahne UI foundation
-- [ ] Responsive tahta layout
+- [x] 5×6 grid UI yapısını oluşturmak
+- [x] Hücre (tile) görsel durumları için temel yapı
+- [x] Game sahne UI foundation
+- [x] Responsive tahta layout
 
 ## Öncelik: Yüksek (Aşama 3C — Türkçe Klavye Girişi)
 
-- [ ] Ekran üstü Türkçe klavye (QWERTY-TR düzeni)
-- [ ] Harf girişi, silme, onay mekanizması
-- [ ] Giriş durumu yönetimi
+- [x] Ekran üstü Türkçe klavye (QWERTY-TR düzeni)
+- [x] Harf girişi, silme, onay mekanizması
+- [x] Giriş durumu yönetimi
+- [x] `Game.unity` sahnesinde kalıcı 3C sahne wiring'i doğrulandı (GameInputController, GameBoardView, TurkishKeyboardController)
+- [x] `Backspace_OnEmptyRow_DoesNothing` testi eklendi (toplam 6 test)
+- [ ] Unity Editor'de `Game` sahnesinde Play testi ile 3C input akışını doğrulamak
 
 ## Öncelik: Yüksek (Aşama 3D — Kelime Değerlendirme)
 

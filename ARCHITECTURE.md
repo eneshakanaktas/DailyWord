@@ -48,7 +48,13 @@ Assets/_Project/
 - Günlük bulmaca mantığı
 - Oyun kuralları ve durumu
 
-**Henüz uygulanmadı.**
+**Aşama 3C kapsamında input durumu uygulanmıştır.**
+
+- `GameInputState`: Aktif satır/kolon, 5 harf sınırı, backspace ve satır ilerletme durumunu UI'dan bağımsız yönetir.
+- `GameInputController`: Klavye event'lerini board yazımına bağlar ve 5 harf tamamlandığında `RowSubmitted` event'i üretir.
+- `GameInputBootstrap`: `Game` sahnesinde `Board` ve `Keyboard` varsa Play sırasında gerekli input bileşenlerini otomatik kurar.
+
+Wordle değerlendirme, günlük bulmacayla tam oyun akışı ve save entegrasyonu henüz uygulanmadı.
 
 ### UI
 - Canvas ve UI elemanlarının kontrolü
@@ -60,6 +66,8 @@ Assets/_Project/
 - `MainMenuController`: Ana menü buton yönetimi ve navigasyon
 - `SafeAreaHandler`: Mobil safe area (notch, status bar) adaptasyonu
 - `UIColors`: Premium renk paleti sabitleri
+- `GameBoardView`: `Tile_XX/Letter` TMP metinlerini otomatik bulup aktif satıra harf yazar.
+- `TurkishKeyboardController`: QWERTY-TR ekran klavyesi butonlarını TMP metnine göre otomatik bağlar; `I / İ / ı / i` değerlerini normalize etmez.
 
 Canvas hiyerarşisi Unity Editor'de `MAINMENU_SETUP.md` kılavuzuna göre oluşturulacak.
 

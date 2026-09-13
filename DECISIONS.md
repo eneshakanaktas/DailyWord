@@ -180,3 +180,20 @@ Kaynak girdiler sessizce normalize edilmez; canonical olmayan veya tekrarlı gir
 - Canvas Scaler, RectTransform anchor düzenlemeleri tam doğruluk gerektirir
 - Editor kılavuzu, adım adım doğrulanabilir bir süreç sağlar
 - Scriptler derlenebilir ve test edilebilir; sahne Editor'de güvenle oluşturulur
+
+---
+
+### K-012: 3C Input Wiring — Merkezi ve Otomatik
+
+**Tarih:** 2026-09-13
+**Durum:** Kabul Edildi
+
+**Bağlam:** `Game.unity` sahnesinde 30 tile ve Türkçe klavye satırları manuel oluşturulmuş olabilir; her tile ve her tuş için Inspector'da tek tek `OnClick` bağlantısı yapmak hataya açık olur.
+
+**Karar:** 3C input sistemi merkezi controller'lar üzerinden kurulacak. `GameBoardView` tile metinlerini `Tile_XX/Letter` düzeninden otomatik bulur. `TurkishKeyboardController` butonları üzerindeki TMP metnine göre harf, backspace ve enter olarak bağlar. `GameInputController` bu event'leri aktif satıra uygular ve 5 harf tamamlandığında yalnızca `RowSubmitted` event'i üretir.
+
+**Gerekçe:**
+- 30 tile ve tüm klavye tuşları için manuel wiring gerektirmez.
+- Türkçe karakterler ve `I / İ / ı / i` ayrımı normalize edilmeden korunur.
+- Kelime doğrulama ve Wordle değerlendirme 3D aşamasına bırakılır.
+- Save, sonuç, istatistik, geçmiş ve ayarlar sistemleri erken oluşturulmaz.
